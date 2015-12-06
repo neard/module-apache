@@ -2,13 +2,13 @@ This a sub-repo of [Neard project](https://github.com/crazy-max/neard) involving
 
 ## Download
 
-* [2.2.22-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.2.22-r1.zip) (default bundle on Neard)
-* [2.2.27-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.2.27-r1.zip)
-* [2.2.29-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.2.29-r1.zip)
-* [2.2.31-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.2.31-r1.zip)
-* [2.4.4-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.4.4-r1.zip)
-* [2.4.12-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.4.12-r1.zip)
-* [2.4.17-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/apache2.4.17-r1.zip)
+* [2.2.22-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.22-r1.zip) (default bundle on Neard)
+* [2.2.27-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.27-r1.zip)
+* [2.2.29-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.29-r1.zip)
+* [2.2.31-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.31-r1.zip)
+* [2.4.4-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.4-r1.zip)
+* [2.4.12-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.12-r1.zip)
+* [2.4.17-r1](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.17-r1.zip)
 
 ## Installation
 
@@ -20,7 +20,7 @@ Directory structure :
 ```
 [-] neard
  | [-] bin
- |  | [-] apache 
+ |  | [-] apache
  |  |  | [-] apache2.2.22
  |  |     | neard.conf
  |  |  | [-] apache2.4.4
