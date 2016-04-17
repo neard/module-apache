@@ -1,5 +1,12 @@
 # Changelog
 
+## r2 (2016/04/17)
+
+This release works since **[Neard 1.0.13](https://github.com/crazy-max/neard/releases/tag/v1.0.13)**
+
+* New bundle : 2.4.20
+* Add Ant build
+
 ## r1 (2015/12/06)
 
 This release works since **[Neard 1.0.13](https://github.com/crazy-max/neard/releases/tag/v1.0.13)**
