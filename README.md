@@ -44,7 +44,7 @@ This a sub-repo of [Neard project](https://github.com/crazy-max/neard) involving
 | **Apache 2.4.4**  | 2013/02/25 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.4-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.4-r1.zip) |
 | **Apache 2.4.12** | 2015/01/27 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.12-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.12-r1.zip) |
 | **Apache 2.4.17** | 2015/10/13 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.17-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.17-r1.zip) |
-| **Apache 2.4.20** | 2016/04/11 | [r2](https://github.com/crazy-max/neard-bin-apache/releases/tag/r2) | [neard-apache-2.4.20-r2.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r2/neard-apache-2.4.20-r2.zip) |
+| **Apache 2.4.20** | 2016/04/11 | [r2](https://github.com/crazy-max/neard-bin-apache/releases/tag/r2) | [neard-apache-2.4.20-r2.7z](https://github.com/crazy-max/neard-bin-apache/releases/download/r2/neard-apache-2.4.20-r2.7z) |
 
 ## Compatibility table
 
