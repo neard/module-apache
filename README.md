@@ -44,6 +44,7 @@ This a sub-repo of [Neard project](https://github.com/crazy-max/neard) involving
 | **Apache 2.4.4**  | 2013/02/25 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.4-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.4-r1.zip) |
 | **Apache 2.4.12** | 2015/01/27 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.12-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.12-r1.zip) |
 | **Apache 2.4.17** | 2015/10/13 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.17-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.17-r1.zip) |
+| **Apache 2.4.20** | 2016/04/11 | [r2](https://github.com/crazy-max/neard-bin-apache/releases/tag/r2) | [neard-apache-2.4.20-r2.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r2/neard-apache-2.4.20-r2.zip) |
 
 ## Compatibility table
 
@@ -55,6 +56,31 @@ This a sub-repo of [Neard project](https://github.com/crazy-max/neard) involving
 | **PHP 5.5.x** | ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/ko-20151214.png) | ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/ok-20151214.png) |
 | **PHP 5.6.x** | ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/ko-20151214.png) | ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/ok-20151214.png) |
 | **PHP 7.0.x** | ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/ko-20151214.png) | ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/ok-20151214.png) |
+
+## Sources
+
+* http://httpd.apache.org/
+* http://www.apachehaus.com/
+
+## Contribute
+
+If you want to contribute to this bundle and create new bundles, you have to download [neard-dev](https://github.com/crazy-max/neard-dev) in the parent folder of the bundle.
+Directory structure example :
+
+```
+[-] neard-dev
+ | [-] build
+ |  |  | build-commons.xml 
+[-] neard-bin-apache
+ |  | build.xml
+```
+
+To create a new bundle :
+* Do not forget to increment the `build.release` in the `build.properties` file.
+* If you want you can change the `build.path` (default `C:\neard-build`).
+* Open a command prompt in your bundle folder and call the Ant target `release` : `ant release`.
+* Upload your release on a file hosting system like [Sendspace](https://www.sendspace.com/).
+* Create an [issue on Neard repository](https://github.com/crazy-max/neard/issues) to integrate your release.
 
 ## Issues
 
