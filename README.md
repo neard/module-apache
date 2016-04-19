@@ -31,21 +31,21 @@ Directory structure example :
 
 ### 2.2
 
-|                   | Apache release date | Neard release | Download |
-| ----------------- |:-------------------:|:-------------:|:--------:|
-| **Apache 2.2.22** ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/star-20151214.png) | 2012/01/31 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.2.22-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.22-r1.zip) |
-| **Apache 2.2.27** | 2014/03/18 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.2.27-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.27-r1.zip) |
-| **Apache 2.2.29** | 2014/09/01 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.2.29-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.29-r1.zip) |
-| **Apache 2.2.31** | 2015/07/16 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.2.31-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.31-r1.zip) |
+|                   | Apache release date | Neard release | Compatible since | Download |
+| ----------------- |:-------------------:|:-------------:|:----------------:|:--------:|
+| **Apache 2.2.22** ![](https://raw.github.com/crazy-max/neard-bin-apache/master/img/star-20151214.png) | 2012/01/31 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.2.22-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.22-r1.zip) |
+| **Apache 2.2.27** | 2014/03/18 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.2.27-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.27-r1.zip) |
+| **Apache 2.2.29** | 2014/09/01 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.2.29-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.29-r1.zip) |
+| **Apache 2.2.31** | 2015/07/16 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.2.31-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.2.31-r1.zip) |
 
 ### 2.4
 
-|                   | Apache release date | Neard release | Download |
-| ----------------- |:-------------------:|:-------------:|:--------:|
-| **Apache 2.4.4**  | 2013/02/25 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.4-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.4-r1.zip) |
-| **Apache 2.4.12** | 2015/01/27 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.12-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.12-r1.zip) |
-| **Apache 2.4.17** | 2015/10/13 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | [neard-apache-2.4.17-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.17-r1.zip) |
-| **Apache 2.4.20** | 2016/04/11 | [r2](https://github.com/crazy-max/neard-bin-apache/releases/tag/r2) | [neard-apache-2.4.20-r2.7z](https://github.com/crazy-max/neard-bin-apache/releases/download/r2/neard-apache-2.4.20-r2.7z) |
+|                   | Apache release date | Neard release | Compatible since | Download |
+| ----------------- |:-------------------:|:-------------:|:----------------:|:--------:|
+| **Apache 2.4.4**  | 2013/02/25 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.4.4-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.4-r1.zip) |
+| **Apache 2.4.12** | 2015/01/27 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.4.12-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.12-r1.zip) |
+| **Apache 2.4.17** | 2015/10/13 | [r1](https://github.com/crazy-max/neard-bin-apache/releases/tag/r1) | Neard 1.0.13 | [neard-apache-2.4.17-r1.zip](https://github.com/crazy-max/neard-bin-apache/releases/download/r1/neard-apache-2.4.17-r1.zip) |
+| **Apache 2.4.20** | 2016/04/11 | [r2](https://github.com/crazy-max/neard-bin-apache/releases/tag/r2) | Neard 1.0.13 | [neard-apache-2.4.20-r2.7z](https://github.com/crazy-max/neard-bin-apache/releases/download/r2/neard-apache-2.4.20-r2.7z) |
 
 ## Compatibility table
 
