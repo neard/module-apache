@@ -1,15 +1,13 @@
 # Changelog
 
-## r2 (2016/04/17)
+### [Check compatibility with Neard](https://github.com/crazy-max/neard/wiki/binApache#latest) before downloading.
 
-This release works since **[Neard 1.0.13](https://github.com/crazy-max/neard/releases/tag/v1.0.13)**
+## r2 (2016/04/17)
 
 * New bundle : 2.4.20
 * Add Ant build
 
 ## r1 (2015/12/06)
-
-This release works since **[Neard 1.0.13](https://github.com/crazy-max/neard/releases/tag/v1.0.13)**
 
 * Init repo with Apache bundles from [Neard](https://github.com/crazy-max/neard)
 * News bundles : 2.2.31, 2.4.17
