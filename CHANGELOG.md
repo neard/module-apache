@@ -2,6 +2,11 @@
 
 ### [Check compatibility with Neard](https://github.com/crazy-max/neard/wiki/binApache#latest) before downloading.
 
+## r3 (2016/10/08)
+
+* New bundle 2.4.23
+* Update bundle 2.2.31
+
 ## r2 (2016/04/17)
 
 * New bundle : 2.4.20
