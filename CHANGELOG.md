@@ -2,6 +2,11 @@
 
 ### [Check compatibility with Neard](https://github.com/crazy-max/neard/wiki/binApache#latest) before downloading.
 
+## r4 (2016/11/28)
+
+* Remove SVN module (included as a binary since Neard 1.0.22)
+* Include mod_fcgid
+
 ## r3 (2016/10/08)
 
 * New bundle 2.4.23
