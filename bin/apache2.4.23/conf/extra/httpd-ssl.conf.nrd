@@ -180,10 +180,14 @@ SSLCertificateKeyFile "${NEARD_LIN_PATH}/ssl/localhost.pub"
     SSLOptions +StdEnvVars
 </FilesMatch>
 <Directory "${NEARD_LIN_PATH}/cgi-bin">
+    AddHandler cgi-script .cgi .exe .pl .py .vbs
     SSLOptions +StdEnvVars
+    Options Indexes FollowSymLinks ExecCGI
     AllowOverride None
-    Options None
-    Require all granted
+    
+    # START switchOnline tag - Do not replace!
+    Require local
+    # END switchOnline tag - Do not replace!
 </Directory>
 <Directory "${NEARD_LIN_PATH}/www">
     SSLOptions +StdEnvVars

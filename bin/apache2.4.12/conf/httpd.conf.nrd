@@ -368,7 +368,7 @@ LogLevel warn
     # client.  The same rules about trailing "/" apply to ScriptAlias
     # directives as to Alias.
     #
-    ScriptAlias /cgi-bin/ "${NEARD_LIN_PATH}/cgi-bin/"
+    Alias /cgi-bin "${NEARD_LIN_PATH}/cgi-bin/"
 
 </IfModule>
 
@@ -385,9 +385,13 @@ LogLevel warn
 # CGI directory exists, if you have that configured.
 #
 <Directory "${NEARD_LIN_PATH}/cgi-bin">
+    AddHandler cgi-script .cgi .exe .pl .py .vbs
+    Options Indexes FollowSymLinks ExecCGI
     AllowOverride None
-    Options None
-    Require all granted
+    
+    # START switchOnline tag - Do not replace!
+    Require local
+    # END switchOnline tag - Do not replace!
 </Directory>
 
 <IfModule mime_module>
