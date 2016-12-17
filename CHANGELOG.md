@@ -2,10 +2,12 @@
 
 ### [Check compatibility with Neard](https://github.com/crazy-max/neard/wiki/binApache#latest) before downloading.
 
-## r4 (2016/11/28)
+## r4 (2016/12/18)
 
-* Remove SVN module (included as a binary since Neard 1.0.22)
-* Include mod_fcgid
+* CGI scripts not working in cgi-bin folder ([Issue #197](https://github.com/crazy-max/neard/issues/197))
+* Include mod_fcgid ([Issue #196](https://github.com/crazy-max/neard/issues/196))
+* Remove SVN module ([Issue #195](https://github.com/crazy-max/neard/issues/195))
+* NameVirtualHost has no effect for Apache > 2.3.11 ([Issue #194](https://github.com/crazy-max/neard/issues/194))
 
 ## r3 (2016/10/08)
 
