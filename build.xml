@@ -1,19 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="neard-bin-apache" basedir=".">
+  
+  <dirname property="project.basedir" file="${ant.file.neard-bin-apache}"/>
+  <property name="root.dir" location="${project.basedir}/.."/>
+  <property name="build.properties" value="${project.basedir}/build.properties"/>
+  <property file="${build.properties}"/>
+  
+  <!-- Neard dev -->
+  <property name="neard-dev.path" location="${root.dir}/neard-dev"/>
+  <fail unless="neard-dev.path" message="Project 'neard-dev' not found in ${neard-dev.path}"/>
+  <echo message="Neard dev found in ${neard-dev.path}" level="debug"/> 
+  
+  <!-- Import build-commons.xml -->
+  <import file="${neard-dev.path}/build/build-commons.xml"/>
+  <!-- Import build-bundle.xml -->
+  <import file="${neard-dev.path}/build/build-bundle.xml"/>
+  
+  <target name="release.build">
+    <basename property="bundle.folder" file="${bundle.path}"/>
+    <replaceproperty src="bundle.folder" dest="bundle.version" replace="${bundle.name}" with=""/>
     
-    <dirname property="project.basedir" file="${ant.file.neard-bin-apache}" />
-    <property name="root.dir" location="${project.basedir}/.." />
-    <property name="build.properties" value="${project.basedir}/build.properties" />
-    <property file="${build.properties}" />
+    <getbundlesrc name="${bundle.name}" version="${bundle.version}" propSrcDest="bundle.srcdest" propSrcFilename="bundle.srcfilename"/>
+    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache22"><available file="${bundle.srcdest}/Apache22" type="dir"/></condition>
+    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache2.2"><available file="${bundle.srcdest}/Apache2.2" type="dir"/></condition>
+    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache24"><available file="${bundle.srcdest}/Apache24" type="dir"/></condition>
+    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache2.4"><available file="${bundle.srcdest}/Apache2.4" type="dir"/></condition>
+    <fail unless="bundle.srcsub" message="Main folder not found"/>
+    <assertfile file="${bundle.srcsub}/bin/httpd.exe"/>
     
-    <!-- Neard dev -->
-    <property name="neard-dev.path" location="${root.dir}/neard-dev" />
-    <fail unless="neard-dev.path" message="Project 'neard-dev' not found in ${neard-dev.path}" />
-    <echo message="Neard dev found in ${neard-dev.path}" level="debug" /> 
+    <delete dir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
+    <mkdir dir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
+    <copy file="${bundle.srcdest}/readme.html"
+      todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"
+      overwrite="true"
+      failonerror="false"
+    />
+    <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
+      <fileset dir="${bundle.srcsub}" excludes="
+        cgi-bin/**,
+        conf/original/**,
+        conf/ssl/**,
+        error/**,
+        htdocs/**,
+        icons/**,
+        include/**,
+        lib/**,
+        logs/*,
+        tools/**"
+      />
+    </copy>
+    <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
+      <fileset dir="${bundle.path}" defaultexcludes="yes"/>
+    </copy>
     
-    <!-- Import build-commons.xml -->
-    <import file="${neard-dev.path}/build/build-commons.xml" />
-    <!-- Import build-bundle.xml -->
-    <import file="${neard-dev.path}/build/build-bundle.xml" />
+    <!-- Copy extensions -->
+    <antcall target="build.apache.modules" inheritRefs="true">
+      <param name="bundle.version" value="${bundle.version}"/>
+    </antcall>
+  </target>
+  
+  <target name="build.apache.modules">
+    <delete file="${build.tmp.path}/apache_modules.tmp"/>
+    <touch file="${build.tmp.path}/apache_modules.tmp"/>
+    <foreach target="build.apache.module" param="apache.modules.path">
+        <path><dirset dir="${project.basedir}/modules" includes="*"/></path>
+    </foreach>
+    <loadfile property="apache.modules" srcFile="${build.tmp.path}/apache_modules.tmp"/>
     
+    <echo message="${line.separator}Apache modules to inject in httpd.conf :${line.separator}${apache.modules}"/>
+    <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}/conf" overwrite="true">
+      <filterset>
+        <filter token="APACHE_MODULES" value="${apache.modules}"/>
+      </filterset>
+      <resources>
+        <file file="${bundle.path}/conf/httpd.conf"/>
+        <file file="${bundle.path}/conf/httpd.conf.nrd"/>
+      </resources>
+    </copy>
+  </target>
+  
+  <target name="build.apache.module">
+    <var name="apache.module.name" unset="true"/>
+    <var name="apache.module.version" unset="true"/>
+    <basename property="apache.module.name" file="${apache.modules.path}"/>
+    <propertyregex override="true" property="apache.module.apacheversion" input="${bundle.version}" regexp="(.*)\.(.*)\.(.*)" select="\1.\2"/>
+    <if>
+      <available file="${apache.modules.path}/apache${apache.module.apacheversion}/${apache.module.name}.properties" type="file"/>
+      <then>
+        <property file="${apache.modules.path}/apache${apache.module.apacheversion}/${apache.module.name}.properties"/>
+        <echo message="Build ${apache.module.name} ${module.version} module..."/>
+        <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
+          <fileset dir="${apache.modules.path}/apache${apache.module.apacheversion}" defaultexcludes="yes" excludes="${apache.module.name}.properties"/>
+        </copy>
+        <if>
+          <istrue value="${module.inject}"/>
+          <then>
+            <echo message="#LoadModule ${module.name} modules/${module.file}${line.separator}" file="${build.tmp.path}/apache_modules.tmp" append="true"/>
+          </then>
+        </if>
+      </then>
+      <else>
+        <echo message="No ${apache.module.name} module available for Apache ${apache.module.apacheversion}" level="warning"/>
+      </else>
+    </if>
+  </target>
 </project>

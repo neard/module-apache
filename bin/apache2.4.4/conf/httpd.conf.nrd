@@ -111,7 +111,6 @@ LoadModule dir_module modules/mod_dir.so
 LoadModule env_module modules/mod_env.so
 LoadModule expires_module modules/mod_expires.so
 #LoadModule ext_filter_module modules/mod_ext_filter.so
-#LoadModule fcgid_module modules/mod_fcgid.so
 #LoadModule file_cache_module modules/mod_file_cache.so
 #LoadModule filter_module modules/mod_filter.so
 LoadModule headers_module modules/mod_headers.so
@@ -173,6 +172,7 @@ LoadModule ssl_module modules/mod_ssl.so
 #LoadModule vhost_alias_module modules/mod_vhost_alias.so
 #LoadModule watchdog_module modules/mod_watchdog.so
 #LoadModule xml2enc_module modules/mod_xml2enc.so
+@APACHE_MODULES@
 
 PHPIniDir "${NEARD_LIN_PATH}/bin/php/php5.3.13"
 LoadFile "${NEARD_LIN_PATH}/bin/php/php5.3.13/php5ts.dll"
