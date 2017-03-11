@@ -20,13 +20,13 @@
     <basename property="bundle.folder" file="${bundle.path}"/>
     <replaceproperty src="bundle.folder" dest="bundle.version" replace="${bundle.name}" with=""/>
     
-    <getbundlesrc name="${bundle.name}" version="${bundle.version}" propSrcDest="bundle.srcdest" propSrcFilename="bundle.srcfilename"/>
-    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache22"><available file="${bundle.srcdest}/Apache22" type="dir"/></condition>
-    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache2.2"><available file="${bundle.srcdest}/Apache2.2" type="dir"/></condition>
-    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache24"><available file="${bundle.srcdest}/Apache24" type="dir"/></condition>
-    <condition property="bundle.srcsub" value="${bundle.srcdest}/Apache2.4"><available file="${bundle.srcdest}/Apache2.4" type="dir"/></condition>
-    <fail unless="bundle.srcsub" message="Main folder not found"/>
-    <assertfile file="${bundle.srcsub}/bin/httpd.exe"/>
+    <getmoduleuntouched name="${bundle.name}" version="${bundle.version}" propSrcDest="bundle.srcdest" propSrcFilename="bundle.srcfilename"/>
+    <condition property="bundle.srcfinal" value="${bundle.srcdest}/Apache22"><available file="${bundle.srcdest}/Apache22" type="dir"/></condition>
+    <condition property="bundle.srcfinal" value="${bundle.srcdest}/Apache2.2"><available file="${bundle.srcdest}/Apache2.2" type="dir"/></condition>
+    <condition property="bundle.srcfinal" value="${bundle.srcdest}/Apache24"><available file="${bundle.srcdest}/Apache24" type="dir"/></condition>
+    <condition property="bundle.srcfinal" value="${bundle.srcdest}/Apache2.4"><available file="${bundle.srcdest}/Apache2.4" type="dir"/></condition>
+    <fail unless="bundle.srcfinal" message="Main folder not found"/>
+    <assertfile file="${bundle.srcfinal}/bin/httpd.exe"/>
     
     <delete dir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
     <mkdir dir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
@@ -36,7 +36,7 @@
       failonerror="false"
     />
     <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
-      <fileset dir="${bundle.srcsub}" excludes="
+      <fileset dir="${bundle.srcfinal}" excludes="
         cgi-bin/**,
         conf/original/**,
         conf/ssl/**,
