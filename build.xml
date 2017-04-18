@@ -28,14 +28,15 @@
     <fail unless="bundle.srcfinal" message="Main folder not found"/>
     <assertfile file="${bundle.srcfinal}/bin/httpd.exe"/>
     
-    <delete dir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
-    <mkdir dir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
-    <copy file="${bundle.srcdest}/readme.html"
-      todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"
+    <property name="apache.prep.path" location="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}"/>
+    <delete dir="${apache.prep.path}"/>
+    <mkdir dir="${apache.prep.path}"/>
+    <copy file="${bundle.srcdest}/readme_first.html"
+      todir="${apache.prep.path}"
       overwrite="true"
       failonerror="false"
     />
-    <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
+    <copy todir="${apache.prep.path}" overwrite="true">
       <fileset dir="${bundle.srcfinal}" excludes="
         cgi-bin/**,
         conf/original/**,
@@ -49,59 +50,60 @@
         tools/**"
       />
     </copy>
-    <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
+    <copy todir="${apache.prep.path}" overwrite="true">
       <fileset dir="${bundle.path}" defaultexcludes="yes"/>
     </copy>
     
-    <!-- Copy extensions -->
-    <antcall target="build.apache.modules" inheritRefs="true">
-      <param name="bundle.version" value="${bundle.version}"/>
-    </antcall>
-  </target>
-  
-  <target name="build.apache.modules">
-    <delete file="${build.tmp.path}/apache_modules.tmp"/>
-    <touch file="${build.tmp.path}/apache_modules.tmp"/>
-    <foreach target="build.apache.module" param="apache.modules.path">
-        <path><dirset dir="${project.basedir}/modules" includes="*"/></path>
-    </foreach>
-    <loadfile property="apache.modules" srcFile="${build.tmp.path}/apache_modules.tmp"/>
-    
-    <echo message="${line.separator}Apache modules to inject in httpd.conf :${line.separator}${apache.modules}"/>
-    <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}/conf" overwrite="true">
-      <filterset>
-        <filter token="APACHE_MODULES" value="${apache.modules}"/>
-      </filterset>
-      <resources>
-        <file file="${bundle.path}/conf/httpd.conf"/>
-        <file file="${bundle.path}/conf/httpd.conf.nrd"/>
-      </resources>
-    </copy>
-  </target>
-  
-  <target name="build.apache.module">
-    <var name="apache.module.name" unset="true"/>
-    <var name="apache.module.version" unset="true"/>
-    <basename property="apache.module.name" file="${apache.modules.path}"/>
-    <propertyregex override="true" property="apache.module.apacheversion" input="${bundle.version}" regexp="(.*)\.(.*)\.(.*)" select="\1.\2"/>
+    <!-- Modules -->
     <if>
-      <available file="${apache.modules.path}/apache${apache.module.apacheversion}/${apache.module.name}.properties" type="file"/>
+      <available file="${apache.prep.path}/modules.properties" type="file"/>
       <then>
-        <property file="${apache.modules.path}/apache${apache.module.apacheversion}/${apache.module.name}.properties"/>
-        <echo message="Build ${apache.module.name} ${module.version} module..."/>
-        <copy todir="${bundle.tmp.prep.path}/${bundle.name}${bundle.version}" overwrite="true">
-          <fileset dir="${apache.modules.path}/apache${apache.module.apacheversion}" defaultexcludes="yes" excludes="${apache.module.name}.properties"/>
+        <echo message="Processing modules..."/>
+        <delete file="${build.tmp.path}/apache_modules.tmp"/>
+        <touch file="${build.tmp.path}/apache_modules.tmp"/>
+        <property prefix="apachemodules" file="${apache.prep.path}/modules.properties"/>
+        <propertyselector property="apachemodules" match="apachemodules\.(.*)" select="\1"/>
+        <for list="${apachemodules}" param="apachemodule">
+          <sequential>
+            <var name="apachemodule.version" unset="true"/>
+            <var name="apachemodule.dest" unset="true"/>
+            <var name="apachemodule.so" unset="true"/>
+            <propertyregex property="apachemodule.version" input="${apachemodules.@{apachemodule}}" regexp="apache-.*-.*-(.*)-win32" select="\1"/>
+            
+            <!-- Download module -->
+            <download url="${apachemodules.@{apachemodule}}" returnProperty="apachemodule.dest"/>
+            <echo message="Module path: ${apachemodule.dest}"/>
+            <condition property="apachemodule.so" value="${apachemodule.dest}/mod_@{apachemodule}/mod_@{apachemodule}.so">
+              <available file="${apachemodule.dest}/mod_@{apachemodule}/mod_@{apachemodule}.so" type="file"/>
+            </condition>
+            <fail unless="apachemodule.so" message="Main so not found"/>
+            
+            <!-- Copy module -->
+            <echo message="Copy @{apachemodule} ${apachemodule.version} module..."/>
+            <copy file="${apachemodule.so}" todir="${apache.prep.path}/modules" overwrite="true"/>
+            
+            <!-- Echo module string to temp file -->
+            <echo message="#LoadModule @{apachemodule}_module modules/mod_@{apachemodule}.so${line.separator}"
+              file="${build.tmp.path}/apache_modules.tmp"
+              append="true"/>
+          </sequential>
+        </for>
+        
+        <!-- Inject in httpd.conf -->
+        <loadfile property="apache.modules" srcFile="${build.tmp.path}/apache_modules.tmp"/>
+        <echo message="${line.separator}Apache modules to inject in httpd.conf :${line.separator}${apache.modules}"/>
+        <copy todir="${apache.prep.path}/conf" overwrite="true">
+          <filterset>
+            <filter token="APACHE_MODULES" value="${apache.modules}"/>
+          </filterset>
+          <resources>
+            <file file="${bundle.path}/conf/httpd.conf"/>
+            <file file="${bundle.path}/conf/httpd.conf.nrd"/>
+          </resources>
         </copy>
-        <if>
-          <istrue value="${module.inject}"/>
-          <then>
-            <echo message="#LoadModule ${module.name} modules/${module.file}${line.separator}" file="${build.tmp.path}/apache_modules.tmp" append="true"/>
-          </then>
-        </if>
+        
+        <delete file="${apache.prep.path}/modules.properties"/>
       </then>
-      <else>
-        <echo message="No ${apache.module.name} module available for Apache ${apache.module.apacheversion}" level="warning"/>
-      </else>
     </if>
   </target>
 </project>
