@@ -1,20 +1,25 @@
 # Changelog
 
+## r5 (2017/04/18)
+
+* New bundles : 2.2.32, 2.4.25 (Issue crazy-max/neard#249)
+* Update all bundles
+
 ## r4 (2016/12/18)
 
-* CGI scripts not working in cgi-bin folder (Issue #197)
-* Include mod_fcgid (Issue #196)
-* Remove SVN module (Issue #195)
-* NameVirtualHost has no effect for Apache > 2.3.11 (Issue #194)
+* CGI scripts not working in cgi-bin folder (Issue crazy-max/neard#197)
+* Include mod_fcgid (Issue crazy-max/neard#196)
+* Remove SVN module (Issue crazy-max/neard#195)
+* NameVirtualHost has no effect for Apache > 2.3.11 (Issue crazy-max/neard#194)
 
 ## r3 (2016/10/08)
 
-* New bundle 2.4.23
+* New bundle 2.4.23 (Issue crazy-max/neard#119)
 * Update bundle 2.2.31
 
 ## r2 (2016/04/17)
 
-* New bundle : 2.4.20
+* New bundle : 2.4.20 (Issue crazy-max/neard#119)
 * Add Ant build
 
 ## r1 (2015/12/06)
