@@ -1,5 +1,9 @@
 # Changelog
 
+## r6 (2017/07/24)
+
+* New bundles : 2.2.34, 2.4.27 (Issue crazy-max/neard#249)
+
 ## r5 (2017/04/18)
 
 * New bundles : 2.2.32, 2.4.25 (Issue crazy-max/neard#249)
