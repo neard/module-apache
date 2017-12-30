@@ -36,7 +36,7 @@
 #
 
 Define NEARD_LIN_PATH "~NEARD_LIN_PATH~"
-Define SRVROOT "${NEARD_LIN_PATH}/bin/apache/apache2.4.23"
+Define SRVROOT "${NEARD_LIN_PATH}/bin/apache/apache2.4.27"
 ServerRoot "${SRVROOT}"
 
 #
