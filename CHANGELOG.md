@@ -1,5 +1,9 @@
 # Changelog
 
+## r8 (2019/05/21)
+
+* New release : 2.4.39 (Issue neard/neard#411)
+
 ## r7 (2017/12/30)
 
 * New release : 2.4.29 (Issue neard/neard#348)

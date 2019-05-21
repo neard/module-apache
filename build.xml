@@ -76,6 +76,9 @@
             <condition property="apachemodule.so" value="${apachemodule.dest}/mod_@{apachemodule}/mod_@{apachemodule}.so">
               <available file="${apachemodule.dest}/mod_@{apachemodule}/mod_@{apachemodule}.so" type="file"/>
             </condition>
+            <condition property="apachemodule.so" value="${apachemodule.dest}/Apache24/modules/mod_@{apachemodule}.so">
+              <available file="${apachemodule.dest}/Apache24/modules/mod_@{apachemodule}.so" type="file"/>
+            </condition>
             <fail unless="apachemodule.so" message="Main so not found"/>
             
             <!-- Copy module -->
