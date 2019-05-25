@@ -5,7 +5,7 @@ This is a module of [Neard project](https://github.com/neard/neard) involving Ap
 
 ## Documentation and downloads
 
-http://neard.io/modules/apache
+https://neard.io/modules/apache
 
 ## Issues
 
